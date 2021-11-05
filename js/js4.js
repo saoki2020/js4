@@ -96,15 +96,13 @@
   const quizFunc = async() => {
     try {
       const res = await fetch('https://opentdb.com/api.php?amount=10&type=multiple');
-      if (!res.ok) {
-        throw new Error();
-      }
       const resObj = await res.json();
       const quizes = resObj.results;
       showQuestion(quizes);
     } catch (e) {
       title.textContent = `エラーが発生しました`;
       question.textContent = `ページをリロードしてください`;
+      console.log(e);
     }
   }
 }
